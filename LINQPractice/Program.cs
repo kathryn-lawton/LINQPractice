@@ -29,8 +29,9 @@ namespace LINQPractice
 			{
 				Console.WriteLine(result);
 			}
+			Console.WriteLine();
+			Console.WriteLine();
 
-			Console.ReadLine();
 
 			List<string> classGrades = new List<string>()
 			{
@@ -39,6 +40,18 @@ namespace LINQPractice
 				"73, 88, 83, 99, 64",
 				"98, 100, 66, 74, 55"
 			};
+
+			//List<string> studentGrades = new List<string>();
+			//foreach (string grades in classGrades)
+			//{
+			//	studentGrades.Add(grades);
+			//	var subGrades = grades.Split(new[] { ',' });				
+			//}
+			var classGrade = classGrades.Select(c => c.Split(',').Select(x => int.Parse(x)).OrderBy(x => x).Skip(1).Average()).Average();
+			Console.WriteLine(classGrade);
+
+			Console.ReadLine();
+			
 		}
 		
 	}
