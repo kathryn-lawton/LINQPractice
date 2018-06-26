@@ -41,17 +41,27 @@ namespace LINQPractice
 				"98, 100, 66, 74, 55"
 			};
 
-			//List<string> studentGrades = new List<string>();
-			//foreach (string grades in classGrades)
-			//{
-			//	studentGrades.Add(grades);
-			//	var subGrades = grades.Split(new[] { ',' });				
-			//}
 			var classGrade = classGrades.Select(c => c.Split(',').Select(x => int.Parse(x)).OrderBy(x => x).Skip(1).Average()).Average();
 			Console.WriteLine(classGrade);
 
 			Console.ReadLine();
-			
+
+			Console.WriteLine();
+			Console.WriteLine();
+
+
+			string input = "mississippi";
+
+			var inputFrequency = input.OrderBy(x => x).GroupBy(x => x).Select(x => x);
+			string resultLetters = "";
+			foreach(var letter in inputFrequency)
+			{
+				int count = letter.Count();
+				resultLetters += $"{count}{letter.First()}";
+			}
+			Console.WriteLine(resultLetters);
+
+			Console.ReadLine();
 		}
 		
 	}
